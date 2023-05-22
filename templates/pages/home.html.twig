@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+
+    <h1> Le Sommaire </h1>
+    <p> Cette page n'a rien à voir avec la footballeuse Eugenie Le Sommer, que j'apprécie par ailleurs, vous vous trouvez sur un site de consultation de livres. </p>
+
+</div>
+
+<div class="container">
+    <h2> Les Derniers Chef d'oeuvres </h2>
+    <div class="row flex">
+        {% for livre in livres %}
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="#"> {{livre.titre}} </a>
+                    </h5>
+                    <p class="card-text"> {{livre.auteur}} </p>
+                    <div class="text-primary"> A obtenu {{livre.getNombreEtoiles()}} étoile(s) sur 5 </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
