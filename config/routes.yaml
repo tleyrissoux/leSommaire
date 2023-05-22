@@ -3,5 +3,5 @@ home:
   controller: App\Controller\HomeController::index
 
 propriete.index:
-  path: /projets
+  path: /livres
   controller: App\Controller\PropertyController::index
