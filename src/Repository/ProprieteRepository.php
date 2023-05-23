@@ -43,8 +43,19 @@ class ProprieteRepository extends ServiceEntityRepository
      * @return Propriete[]
      */
     public function trouveLesDerniers() : array {
-        return $this->createQueryBuilder('p')
+        return $this->createQueryBuilder("p")
+        ->orderBy("p.depose_a", "DESC")
         ->setMaxResults(4)
+        ->getQuery()
+        ->getResult();
+    }
+
+    /**
+     * @return Propriete[]
+     */
+    public function trouveEtOrdonneParNotesDesc() : array {
+        return $this->createQueryBuilder("p")
+        ->orderBy("p.nombre_etoiles", "DESC")
         ->getQuery()
         ->getResult();
     }

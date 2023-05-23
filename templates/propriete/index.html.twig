@@ -1,10 +1,14 @@
-{% extends "base.html.twig" %}
+{% extends "pages/home.html.twig" %}
 
 {% block body %}
 
+<div class="jumbotron text-center index_banniere">
+    <h2> Collection étoilé </h2>
+</div>
+
 <div class="container mt-4">
 
-    <h2> Collection étoilé </h2>    
+    {{ block("livres") }}
 
 </div>
 

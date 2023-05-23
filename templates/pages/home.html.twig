@@ -10,22 +10,27 @@
 </div>
 
 <div class="container">
+
     <h2> Les Derniers Chef d'oeuvres </h2>
+
+    {% block livres %}
     <div class="row flex">
         {% for livre in livres %}
         <div class="col-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="#"> {{livre.titre}} </a>
+                        <a href="#" class="livres_details"> {{livre.titre}} </a>
                     </h5>
                     <p class="card-text"> {{livre.auteur}} </p>
-                    <div class="text-primary"> A obtenu {{livre.getNombreEtoiles()}} étoile(s) sur 5 </div>
+                    <div class="livres_details"> A obtenu {{livre.getNombreEtoiles()}} étoile(s) sur 5 </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+    {% endblock %}
+
 </div>
 
 {% endblock %}
