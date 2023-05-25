@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title livre.titre %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-9">
+                <h3> A obtenu {{livre.getNombreEtoiles()}} étoile(s) sur 5 </h3>
+                <h2> {{livre.auteur}} </h2>
+                <h1 class="text-primary"> {{livre.titre}} </h1>
+                <a href="{{ path("livre.premiere_page", {id : livre.id, slug : livre.slug}) }}" class="btn btn-primary"> Aperçu </a>
+            </div>
+
+            <div class="col-md-3">
+    
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+
+        <div class="col-md-7">
+            {{ livre.resume | nl2br }}
+        </div>
+
+        <div class="col-md-5">
+            <h2> Détails </h2>
+            <table class="table table-striped">
+                <tr>
+                    <td> Nombre de pages </td>
+                    <td> {{livre.getNombrePages()}} </td>
+                </tr>
+                <tr>
+                    <td> ISBN </td>
+                    <td> {{livre.isbn}} </td>
+                    {# <td> {%if {{livre.isbn}} is defined%} {{livre.isbn}} </td> #}
+                </tr>
+                <tr>
+                    <td> Depositaire</td>
+                    <td> {{livre.depositaire}} </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

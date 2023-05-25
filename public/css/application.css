@@ -5,3 +5,7 @@
 .livres_details {
     color:goldenrod;    
 }
+
+.conteneur_meme_hauteur {
+    display : flex;
+}

@@ -5,6 +5,7 @@ use App\Entity\Propriete;
 use App\Repository\ProprieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PropertyController extends AbstractController {
 
@@ -36,6 +37,7 @@ class PropertyController extends AbstractController {
     }
 
     /**
+     * @Route("/livres", name = "livre.index")
      * @return Response
      */
     public function index () : Response {
@@ -47,11 +49,40 @@ class PropertyController extends AbstractController {
 
         $livres = $this->repository->trouveEtOrdonneParNotesDesc();
 
-        return $this->render("propriete/index.html.twig", [
+        return $this->render("livre/index.html.twig", [
             "menu_courant" => "proprietes",
             "livres" => $livres,
         ]);
 
     }
+
+    /**
+     * @Route("/livres/{slug}-{id}", name = "livre.details", requirements = {"slug": "[a-z0-9\-]*"})
+     * @param Propriete $livre
+     * @return Response
+     */
+    public function details(Propriete $livre) : Response {
+
+        // $livre = $this->repository->find($id);
+        
+        return $this->render("livre/details.html.twig", [
+            "menu_courant" => "proprietes",
+            "livre" => $livre,
+        ]);
+
+    }
+
+    /**
+     * @Route("/livres/{slug}-{id}/premiere_page", name = "livre.premiere_page", requirements = {"slug": "[a-z0-9\-]*"})
+     * @param Propriete $livre
+     * @return Response
+     */
+    public function premierePage(Propriete $livre) : Response {
+        return $this->render("livre/premiere-page.html.twig", [
+            // "menu_courant" => "proprietes",
+            "livre" => $livre,
+        ]);
+    }
+
 }
 ?>

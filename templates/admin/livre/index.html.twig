@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title "Gérer les livres" %}
+
+{% block body %}
+<div class="container mt-4">
+
+    <h1> Bibliothèque </h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Titre </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livre in livres %}
+            <tr>
+
+                <td> {{livre.titre}} </td>
+
+                <td>
+                    
+                    <a href = "{{path("admin.livre.editer", {id : livre.id}) }}" class = "btn btn-secondary"> Editer </a>
+                    
+                    <form method = "post" action = "{{ path("admin.livre.supprimer", {id : livre.id}) }}" style = "display : inline-block"
+                    onsubmit = "return confirm('Êtes-vous certain ? ')" >
+                        <input type = "hidden" name = "_method" value = "DELETE">
+                        <input type = "hidden" name = "_token" value = "{{ csrf_token("supprimer" ~ livre.id) }}" >
+                        
+                        <button class = "btn btn-danger"> Supprimer </button>
+                    </form>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <a href = "{{ path("admin.livre.ajout") }}" class = "btn btn-primary"> Déposer un livre </a>
+    </div>
+
+</div>
+{% endblock %}

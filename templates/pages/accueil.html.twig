@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="#" class="livres_details"> {{livre.titre}} </a>
+                        <a href="{{ path("livre.details", {id : livre.id, slug : livre.slug}) }}" class="livres_details"> {{livre.titre}} </a>
                     </h5>
                     <p class="card-text"> {{livre.auteur}} </p>
                     <div class="livres_details"> A obtenu {{livre.getNombreEtoiles()}} étoile(s) sur 5 </div>

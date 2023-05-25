@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProprieteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass=ProprieteRepository::class)
@@ -84,6 +85,10 @@ class Propriete
     public function getTitre(): ?string
     {
         return $this->titre;
+    }
+
+    public function getSlug() : string {
+        return (new Slugify())->slugify($this->titre);
     }
 
     public function setTitre(string $titre): self
