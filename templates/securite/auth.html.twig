@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title "S'authentifier" %}
+
+{% block body %}
+<div class="container mt-4">
+
+    {% if erreur %}
+        <div class="alert alert-danger">
+            {{ erreur.messageKey | trans(erreur.messagedata, "security") }}
+        </div>
+    {% endif %}
+
+    <form action = "{{ path("auth") }}" method = "post">
+        
+        <div class = "form-group">
+            <label for = "username"> Identifiant </label>
+            <input type = "text" id = "username" name = "_username" class = "form-control" value = "{{dernier_identifiant}}" >
+        </div>
+    
+        <div class = "form-group">
+            <label for = "password"> Mot de passe </label>
+            <input type = "password" id = "password" name = "_password" class = "form-control">
+        </div>
+    
+        <button type = "submit" class = "btn btn-primary"> S'authentifier </button>
+    
+    </form>
+
+</div>
+{% endblock %}
