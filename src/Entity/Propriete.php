@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProprieteRepository;
-use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProprieteRepository::class)
